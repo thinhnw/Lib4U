@@ -34,8 +34,8 @@ namespace Lib4U
                 //Here we create a Admin super user who will maintain the website                   
 
                 var user = new ApplicationUser();
-                user.UserName = "thinhnw";
-                user.Email = "thinhnw@gmail.com";
+                user.UserName = "john@doe.com";
+                user.Email = "john@doe.com";
 
                 string userPWD = "Pass123!";
 
