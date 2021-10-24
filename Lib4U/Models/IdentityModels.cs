@@ -30,5 +30,17 @@ namespace Lib4U.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Lib4U.Models.Book> Books { get; set; }
+
+        public System.Data.Entity.DbSet<Lib4U.Models.Publisher> Publishers { get; set; }
+
+        public System.Data.Entity.DbSet<Lib4U.Models.Author> Authors { get; set; }
+
+        public System.Data.Entity.DbSet<Lib4U.Models.Genre> Genres { get; set; }
+
+        public System.Data.Entity.DbSet<Lib4U.Models.BookAuthor> BookAuthors { get; set; }
+
+        public System.Data.Entity.DbSet<Lib4U.Models.BookGenre> BookGenres { get; set; }
     }
 }
