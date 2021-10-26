@@ -178,6 +178,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PublishersController.cs" />
+    <Compile Include="Controllers\ReadersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -192,6 +193,10 @@
     <Compile Include="Migrations\202110230301190_Genres.cs" />
     <Compile Include="Migrations\202110230301190_Genres.Designer.cs">
       <DependentUpon>202110230301190_Genres.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110250400248_AddNameToUsers.cs" />
+    <Compile Include="Migrations\202110250400248_AddNameToUsers.Designer.cs">
+      <DependentUpon>202110250400248_AddNameToUsers.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -2358,6 +2363,9 @@
     <Content Include="Views\BookGenres\Details.cshtml" />
     <Content Include="Views\BookGenres\Edit.cshtml" />
     <Content Include="Views\BookGenres\Index.cshtml" />
+    <Content Include="Views\Shared\_AdminNavbar.cshtml" />
+    <Content Include="Views\Shared\_AdminSidebar.cshtml" />
+    <Content Include="Views\Readers\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2376,6 +2384,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110230301190_Genres.resx">
       <DependentUpon>202110230301190_Genres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110250400248_AddNameToUsers.resx">
+      <DependentUpon>202110250400248_AddNameToUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
