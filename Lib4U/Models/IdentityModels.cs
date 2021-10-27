@@ -9,9 +9,7 @@ namespace Lib4U.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
-        public string Address { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+     
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -31,11 +29,11 @@ namespace Lib4U.Models
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
-        }
-
-        public System.Data.Entity.DbSet<Lib4U.Models.Book> Books { get; set; }
+        }        
 
         public System.Data.Entity.DbSet<Lib4U.Models.Publisher> Publishers { get; set; }
+
+        public System.Data.Entity.DbSet<Lib4U.Models.Book> Books { get; set; }
 
         public System.Data.Entity.DbSet<Lib4U.Models.Author> Authors { get; set; }
 
@@ -45,6 +43,6 @@ namespace Lib4U.Models
 
         public System.Data.Entity.DbSet<Lib4U.Models.BookGenre> BookGenres { get; set; }
 
-        
+        public System.Data.Entity.DbSet<Lib4U.Models.Reader> Readers { get; set; }
     }
 }

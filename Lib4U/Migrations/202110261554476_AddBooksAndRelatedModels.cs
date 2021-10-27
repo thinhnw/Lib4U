@@ -1,27 +1,22 @@
- namespace Lib4U.Migrations
+namespace Lib4U.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Genres : DbMigration
+    public partial class AddBooksAndRelatedModels : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.Books",
+                "dbo.Authors",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Title = c.String(nullable: false),
-                        Image = c.String(),
-                        Total_pages = c.Int(nullable: false),
-                        Rating = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        Published_date = c.DateTime(nullable: false),
-                        PublisherId = c.Int(nullable: false),
+                        First_name = c.String(nullable: false),
+                        Middle_name = c.String(),
+                        Last_name = c.String(),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Publishers", t => t.PublisherId, cascadeDelete: true)
-                .Index(t => t.PublisherId);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.BookAuthors",
@@ -38,15 +33,20 @@
                 .Index(t => t.AuthorId);
             
             CreateTable(
-                "dbo.Authors",
+                "dbo.Books",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        First_name = c.String(nullable: false),
-                        Middle_name = c.String(),
-                        Last_name = c.String(),
+                        Title = c.String(nullable: false),
+                        Image = c.String(),
+                        Total_pages = c.Int(nullable: false),
+                        Rating = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Published_date = c.DateTime(nullable: false),
+                        PublisherId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Publishers", t => t.PublisherId, cascadeDelete: true)
+                .Index(t => t.PublisherId);
             
             CreateTable(
                 "dbo.BookGenres",
@@ -79,11 +79,12 @@
                         Name = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
-            
+                        
         }
         
         public override void Down()
         {
+            AddColumn("dbo.AspNetUsers", "Address", c => c.String());
             DropForeignKey("dbo.Books", "PublisherId", "dbo.Publishers");
             DropForeignKey("dbo.BookGenres", "GenreId", "dbo.Genres");
             DropForeignKey("dbo.BookGenres", "BookId", "dbo.Books");
@@ -91,15 +92,15 @@
             DropForeignKey("dbo.BookAuthors", "AuthorId", "dbo.Authors");
             DropIndex("dbo.BookGenres", new[] { "GenreId" });
             DropIndex("dbo.BookGenres", new[] { "BookId" });
+            DropIndex("dbo.Books", new[] { "PublisherId" });
             DropIndex("dbo.BookAuthors", new[] { "AuthorId" });
             DropIndex("dbo.BookAuthors", new[] { "BookId" });
-            DropIndex("dbo.Books", new[] { "PublisherId" });
             DropTable("dbo.Publishers");
             DropTable("dbo.Genres");
             DropTable("dbo.BookGenres");
-            DropTable("dbo.Authors");
-            DropTable("dbo.BookAuthors");
             DropTable("dbo.Books");
+            DropTable("dbo.BookAuthors");
+            DropTable("dbo.Authors");
         }
     }
 }

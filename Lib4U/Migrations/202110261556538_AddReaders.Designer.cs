@@ -7,13 +7,13 @@ namespace Lib4U.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Genres : IMigrationMetadata
+    public sealed partial class AddReaders : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Genres));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddReaders));
         
         string IMigrationMetadata.Id
         {
-            get { return "202110230301190_Genres"; }
+            get { return "202110261556538_AddReaders"; }
         }
         
         string IMigrationMetadata.Source

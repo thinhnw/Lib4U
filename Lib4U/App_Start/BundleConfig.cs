@@ -26,7 +26,7 @@ namespace Lib4U
                          "~/Content/bootstrap.css",
                          "~/adminlte/plugins/fontawesome-free/css/all.min.css",
                          "~/adminlte/css/adminlte.min.css",
-                         "~/Content/site.css"
+                         "~/Content/Site.css"
                          ));
 
             bundles.Add(new ScriptBundle("~/adminlte/js").Include(

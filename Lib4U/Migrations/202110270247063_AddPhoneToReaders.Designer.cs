@@ -6,14 +6,14 @@ namespace Lib4U.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Address : IMigrationMetadata
+    [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
+    public sealed partial class AddPhoneToReaders : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Address));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddPhoneToReaders));
         
         string IMigrationMetadata.Id
         {
-            get { return "202110180436302_Address"; }
+            get { return "202110270247063_AddPhoneToReaders"; }
         }
         
         string IMigrationMetadata.Source

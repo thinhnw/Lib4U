@@ -186,17 +186,21 @@
     <Compile Include="Migrations\202110180411537_InitialCreate.Designer.cs">
       <DependentUpon>202110180411537_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202110180436302_Address.cs" />
-    <Compile Include="Migrations\202110180436302_Address.Designer.cs">
-      <DependentUpon>202110180436302_Address.cs</DependentUpon>
+    <Compile Include="Migrations\202110261554476_AddBooksAndRelatedModels.cs" />
+    <Compile Include="Migrations\202110261554476_AddBooksAndRelatedModels.Designer.cs">
+      <DependentUpon>202110261554476_AddBooksAndRelatedModels.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202110230301190_Genres.cs" />
-    <Compile Include="Migrations\202110230301190_Genres.Designer.cs">
-      <DependentUpon>202110230301190_Genres.cs</DependentUpon>
+    <Compile Include="Migrations\202110261556538_AddReaders.cs" />
+    <Compile Include="Migrations\202110261556538_AddReaders.Designer.cs">
+      <DependentUpon>202110261556538_AddReaders.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202110250400248_AddNameToUsers.cs" />
-    <Compile Include="Migrations\202110250400248_AddNameToUsers.Designer.cs">
-      <DependentUpon>202110250400248_AddNameToUsers.cs</DependentUpon>
+    <Compile Include="Migrations\202110261744508_AlterUserIdOnReaders.cs" />
+    <Compile Include="Migrations\202110261744508_AlterUserIdOnReaders.Designer.cs">
+      <DependentUpon>202110261744508_AlterUserIdOnReaders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110270247063_AddPhoneToReaders.cs" />
+    <Compile Include="Migrations\202110270247063_AddPhoneToReaders.Designer.cs">
+      <DependentUpon>202110270247063_AddPhoneToReaders.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -208,6 +212,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Publisher.cs" />
+    <Compile Include="Models\Reader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -2365,7 +2370,8 @@
     <Content Include="Views\BookGenres\Index.cshtml" />
     <Content Include="Views\Shared\_AdminNavbar.cshtml" />
     <Content Include="Views\Shared\_AdminSidebar.cshtml" />
-    <Content Include="Views\Readers\List.cshtml" />
+    <Content Include="Views\Readers\Index.cshtml" />
+    <Content Include="Views\Readers\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2379,14 +2385,17 @@
     <EmbeddedResource Include="Migrations\202110180411537_InitialCreate.resx">
       <DependentUpon>202110180411537_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110180436302_Address.resx">
-      <DependentUpon>202110180436302_Address.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202110261554476_AddBooksAndRelatedModels.resx">
+      <DependentUpon>202110261554476_AddBooksAndRelatedModels.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110230301190_Genres.resx">
-      <DependentUpon>202110230301190_Genres.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202110261556538_AddReaders.resx">
+      <DependentUpon>202110261556538_AddReaders.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110250400248_AddNameToUsers.resx">
-      <DependentUpon>202110250400248_AddNameToUsers.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202110261744508_AlterUserIdOnReaders.resx">
+      <DependentUpon>202110261744508_AlterUserIdOnReaders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110270247063_AddPhoneToReaders.resx">
+      <DependentUpon>202110270247063_AddPhoneToReaders.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
