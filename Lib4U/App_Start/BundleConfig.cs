@@ -33,33 +33,31 @@ namespace Lib4U
              "~/adminlte/js/adminlte.min.js"));
 
             // add user css
-            bundles.Add(new StyleBundle("~/User/css").Include(
-                "~/Content/User/css/font-awesome.min.css",
-                "~/Content/User/css/jquery.accordion.css",
-                "~/Content/User/css/mmenu.css",
-                "~/Content/User/css/mmenu.positioning.css",
-                "~/Content/User/css/responsivetable.css",
-                "~/Content/User/css/style.css"
-                ));
-            bundles.Add(new ScriptBundle("~/User/js").Include(
-                "~/Content/User/js/accordion.min.js",
-                "~/Content/User/js/bootstrap.min.js",
-                "~/Content/User/js/bxslider.min.js",
-                "~/Content/User/js/carousel.swipe.min.js",
-                "~/Content/User/js/facts.counter.min.js",
-                "~/Content/User/js/google.map.js",
-                "~/Content/User/js/harvey.min.js",
-                "~/Content/User/js/jquery-1.12.4.min.js",
-                "~/Content/User/js/jquery-ui.min.js",
-                "~/Content/User/js/jquery.easing.1.3.js",
-                "~/Content/User/js/main.js",
-                "~/Content/User/js/masonry.min.js",
-                "~/Content/User/js/mixitup.min.js",
-                "~/Content/User/js/mmenu.min.js",
-                "~/Content/User/js/owl.carousel.min.js",
-                "~/Content/User/js/responsive.table.min.js",
-                "~/Content/User/js/responsive.tabs.min.js",
-                "~/Content/User/js/waypoints.min.js"
+            bundles.Add(new StyleBundle("~/Client/css").Include(
+                            "~/Content/Client/css/font-awesome.min.css",
+                            "~/Content/Client/css/mmenu.css",
+                            "~/Content/Client/css/mmenu.positioning.css",
+                            "~/Content/Client/css/jquery.accordion.css",
+                            "~/Content/Client/style.css"
+                            ));
+            bundles.Add(new ScriptBundle("~/Client/js").Include(
+                            "~/Content/Client/js/jquery-1.12.4.min.js",
+                            "~/Content/Client/js/jquery-ui.min.js",
+                            "~/Content/Client/js/jquery.easing.1.3.js",
+                            "~/Content/Client/js/bootstrap.min.js",
+                            "~/Content/Client/js/mmenu.min.js",
+                            "~/Content/Client/js/harvey.min.js",
+                            "~/Content/Client/js/waypoints.min.js",
+                            "~/Content/Client/js/facts.counter.min.js",
+                            "~/Content/Client/js/mixitup.min.js",
+                            "~/Content/Client/js/owl.carousel.min.js",
+                            "~/Content/Client/js/accordion.min.js",
+                            "~/Content/Client/js/responsive.tabs.min.js",
+                            "~/Content/Client/js/responsive.table.min.js",
+                            "~/Content/Client/js/masonry.min.js",
+                            "~/Content/Client/js/carousel.swipe.min.js",
+                            "~/Content/Client/js/bxslider.min.js",
+                            "~/Content/Client/js/main.js"
                 ));
         }
     }
