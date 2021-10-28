@@ -1,10 +1,9 @@
-﻿using Lib4U.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Lib4U.Controllers
+namespace Lib4U.Models
 {
     public class Reservation
     {
