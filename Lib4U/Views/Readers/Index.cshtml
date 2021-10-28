@@ -31,8 +31,10 @@
                             <td>@reader.MobilePhone</td>
                             <td>@reader.Address</td>
                             <td>1</td>
-                            <td>
-                                <i class="fas fa-edit text-primary"></i>
+                            <td>                                
+                                <a href="@Url.Action("Edit", "Readers", new { id = reader.Id })">
+                                    <i class="fas fa-edit text-primary"></i>
+                                </a>
                                 <i class="fas fa-times-circle text-danger ml-2"></i>                                
                             </td>
                         </tr>

@@ -1,20 +1,19 @@
-﻿@model Lib4U.Models.ReaderCreateViewModel
+﻿@model Lib4U.Models.ReaderEditViewModel
 
 @{
-    ViewBag.Title = "Reader Form";
+    ViewBag.Title = "Editing Reader Information";
 }
 
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <h2 class="my-3">Form</h2>
-            @using (Html.BeginForm("Create", "Readers"))
+            <h2 class="my-3">Editing Reader Information</h2>
+            @using (Html.BeginForm("Edit", "Readers"))
             {
                 @Html.ValidationSummary(true, "Please fix the following error(s):")
                 <div class="row">
 
-                    <div class="col-6">
-                        <h5 class="mb-3">Personal Informations</h5>
+                    <div class="col-6">                        
                         <div class="form-row">
                             <div class="col-6">
                                 <div class="form-group">
@@ -41,22 +40,8 @@
                             @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
                             @Html.ValidationMessageFor(m => m.Address)
                         </div>
-                        <button type="submit" class="btn btn-primary">Confirm Registration</button>
-                    </div>
-                    <div class="col-6">
-                        <h5 class="mb-3">Registration Informations</h5>
-                        <div class="form-group">
-                            @Html.LabelFor(m => m.Email)
-                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.Email)
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(m => m.Password)
-                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.Password)
-                        </div>
-
-                    </div>
+                        <button type="submit" class="btn btn-primary">Confirm</button>
+                    </div>              
                 </div>
 
 

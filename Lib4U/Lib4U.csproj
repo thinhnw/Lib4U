@@ -179,6 +179,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PublishersController.cs" />
     <Compile Include="Controllers\ReadersController.cs" />
+    <Compile Include="Controllers\Reservation.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2561,6 +2562,8 @@
     <Content Include="Views\Shared\_AdminSidebar.cshtml" />
     <Content Include="Views\Readers\Index.cshtml" />
     <Content Include="Views\Readers\Create.cshtml" />
+    <Content Include="Views\Readers\Edit.cshtml" />
+    <Content Include="Views\Shared\_UserLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

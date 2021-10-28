@@ -12,6 +12,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Lib4U.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ReadersController : Controller
     {
         private ApplicationDbContext _context;                
@@ -21,7 +22,7 @@ namespace Lib4U.Controllers
             _context = new ApplicationDbContext();                                 
         }
 
-        // GET: Readers
+        // GET: Readers        
         public ActionResult Index()
         {
             var readers = _context.Readers.ToList();
@@ -42,7 +43,7 @@ namespace Lib4U.Controllers
 
         // POST: Readers/Create
         [HttpPost]
-        public async Task<ActionResult> Create(ReaderFormViewModel model)
+        public async Task<ActionResult> Create(ReaderCreateViewModel model)
         {
             try
             {                
@@ -64,6 +65,9 @@ namespace Lib4U.Controllers
                     reader.UserId = user.Id;
                     _context.Readers.Add(reader);
                     _context.SaveChanges();
+
+                    UserManager.AddToRole(user.Id, "Reader");
+
                     return RedirectToAction("Index");
                 }
                 AddErrors(result);
@@ -79,18 +83,35 @@ namespace Lib4U.Controllers
         // GET: Readers/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var readerInDb = _context.Readers.Single(reader => reader.Id == id);
+            var viewModel = new ReaderEditViewModel();
+            viewModel.FirstName = readerInDb.FirstName;
+            viewModel.LastName = readerInDb.LastName;
+            viewModel.MobilePhone = readerInDb.MobilePhone;
+            viewModel.Address = readerInDb.Address;
+            return View(viewModel);
         }
 
         // POST: Readers/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, ReaderEditViewModel model)
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                // TODO: Add update logic here                
+                if (!ModelState.IsValid)
+                {
+                    return View("Edit");
+                }
+                
+                var readerInDb = _context.Readers.Single(reader => reader.Id == id);
+                readerInDb.Address = model.Address;
+                readerInDb.FirstName = model.FirstName;
+                readerInDb.LastName = model.LastName;
+                readerInDb.MobilePhone = model.MobilePhone;
+                
+                _context.SaveChanges();
+                return RedirectToAction("Index");                                
             }
             catch
             {
