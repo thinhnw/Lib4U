@@ -26,11 +26,14 @@ namespace Lib4U
                          "~/Content/bootstrap.css",
                          "~/adminlte/plugins/fontawesome-free/css/all.min.css",
                          "~/adminlte/css/adminlte.min.css",
+                         "~/adminlte/plugins/select2/css/select2.min.css",
                          "~/Content/Site.css"
                          ));
 
             bundles.Add(new ScriptBundle("~/adminlte/js").Include(
-             "~/adminlte/js/adminlte.min.js"));
+                        "~/adminlte/js/adminlte.min.js",
+                        "~/adminlte/plugins/select2/js/select2.min.js"
+                        ));
 
             // add user css
             bundles.Add(new StyleBundle("~/Client/css").Include(

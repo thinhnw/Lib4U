@@ -26,6 +26,11 @@ namespace Lib4U.Models
         [Required]
         public string UserId { get; set; }
         public virtual ApplicationUser User { get; set; }
+
+        public string FullName
+        {
+            get => FirstName + " " + LastName;
+        }
     }
 
     public class ReaderCreateViewModel

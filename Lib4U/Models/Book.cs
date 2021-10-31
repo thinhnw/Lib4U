@@ -23,5 +23,11 @@ namespace Lib4U.Models
         public virtual Publisher Publisher { get; set; }
         public virtual ICollection<BookAuthor> BookAuthor { get; set; }
         public virtual ICollection<BookGenre> BookGenre { get; set; }
+
+        [Required]
+        [Range(0, int.MaxValue, ErrorMessage = "Quantity cannot be a negative number")]
+        public int Quantity { get; set; }
+        public int AvailableQuantity { get; set; }
+        
     }
 }

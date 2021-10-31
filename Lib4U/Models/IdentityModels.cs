@@ -44,5 +44,7 @@ namespace Lib4U.Models
         public System.Data.Entity.DbSet<Lib4U.Models.BookGenre> BookGenres { get; set; }
 
         public System.Data.Entity.DbSet<Lib4U.Models.Reader> Readers { get; set; }
+
+        public System.Data.Entity.DbSet<Lib4U.Models.Reservation> Reservations { get; set; }
     }
 }

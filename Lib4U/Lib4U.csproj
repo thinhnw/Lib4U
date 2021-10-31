@@ -180,6 +180,8 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PublishersController.cs" />
     <Compile Include="Controllers\ReadersController.cs" />
+    <Compile Include="Controllers\RerservationNewViewModel.cs" />
+    <Compile Include="Controllers\ReservationsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -202,6 +204,14 @@
     <Compile Include="Migrations\202110270247063_AddPhoneToReaders.cs" />
     <Compile Include="Migrations\202110270247063_AddPhoneToReaders.Designer.cs">
       <DependentUpon>202110270247063_AddPhoneToReaders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110290225206_AddQuantityToBooks.cs" />
+    <Compile Include="Migrations\202110290225206_AddQuantityToBooks.Designer.cs">
+      <DependentUpon>202110290225206_AddQuantityToBooks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110290237551_AddReservationsTable.cs" />
+    <Compile Include="Migrations\202110290237551_AddReservationsTable.Designer.cs">
+      <DependentUpon>202110290237551_AddReservationsTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -2108,6 +2118,10 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\chosen-sprite%402x.png" />
+    <Content Include="Content\chosen-sprite.png" />
+    <Content Include="Content\chosen.css" />
+    <Content Include="Content\chosen.min.css" />
     <Content Include="Content\Client\css\font-awesome.min.css" />
     <Content Include="Content\Client\css\jquery.accordion.css" />
     <Content Include="Content\Client\css\mmenu.css" />
@@ -2477,6 +2491,10 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\chosen.jquery.js" />
+    <Content Include="Scripts\chosen.jquery.min.js" />
+    <Content Include="Scripts\chosen.proto.js" />
+    <Content Include="Scripts\chosen.proto.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -2605,6 +2623,7 @@
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\prototype.js" />
     <Content Include="Scripts\src\index.js" />
     <Content Include="Scripts\src\methods\defaults.js" />
     <Content Include="Scripts\src\methods\destroy.js" />
@@ -2758,6 +2777,8 @@
     <Content Include="Views\Client\BookAndMedia.cshtml" />
     <Content Include="Views\Client\BookAndMediaView2.cshtml" />
     <Content Include="Views\Client\Detail.cshtml" />
+    <Content Include="Views\Reservations\Index.cshtml" />
+    <Content Include="Views\Reservations\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2782,6 +2803,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110270247063_AddPhoneToReaders.resx">
       <DependentUpon>202110270247063_AddPhoneToReaders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110290225206_AddQuantityToBooks.resx">
+      <DependentUpon>202110290225206_AddQuantityToBooks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110290237551_AddReservationsTable.resx">
+      <DependentUpon>202110290237551_AddReservationsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
