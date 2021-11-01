@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Lib4U.Models.Reservation>
+﻿@model IEnumerable<Lib4U.Models.ReservationListViewModel>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -6,19 +6,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Book.Title)
+            Book Title
         </th>
         <th>
             Student
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ReservedDate)
+            Reserved Date
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DueDate)
+            Due Date
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ReturnedDate)
+            Returned Date
         </th>
         <th></th>
     </tr>
@@ -26,25 +26,42 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Book.Title)
+            @Html.DisplayFor(m => item.Reservation.Book.Title)
         </td>
         <td>                
-            @Html.DisplayFor(modelItem => item.Reader.FirstName)
-            @Html.DisplayFor(modelItem => item.Reader.LastName)
+            @Html.DisplayFor(m => item.StudentName)            
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ReservedDate)
+            @Html.DisplayFor(m => item.Reservation.ReservedDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DueDate)
+            @Html.DisplayFor(m => item.Reservation.DueDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ReturnedDate)
+            @if (item.Reservation.ReturnedDate != null)
+            {
+                <span>
+                    @item.Reservation.ReturnedDate
+                </span>                
+            } 
+            else
+            {
+                <span>-</span>
+            }            
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            <span>
+
+                @if (item.Reservation.ReturnedDate == null)
+                {                    
+                    <a href="@Url.Action("Return", "Reservations", new { id = item.Reservation.Id })">
+                        <i class="fas fa-sign-in-alt text-primary"></i>
+                    </a>
+                }              
+            </span>          
+            <span>
+                @Html.ActionLink("Delete", "Delete", new { id = item.Reservation.Id })
+            </span>                                
         </td>
     </tr>
 }

@@ -30,4 +30,5 @@ namespace Lib4U.Models
         public int AvailableQuantity { get; set; }
         
     }
+    
 }

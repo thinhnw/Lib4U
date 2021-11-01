@@ -17,7 +17,8 @@ namespace Lib4U.Controllers
         // GET: Reservations
         public ActionResult Index()
         {
-            return View();
+            var viewModel = _context.Reservations.Select(rs => new ReservationListViewModel { Reservation = rs }).ToArray();
+            return View(viewModel);
         }
 
         // GET: Reservations/Details/5
@@ -35,25 +36,69 @@ namespace Lib4U.Controllers
             {
                 Readers = readers,
                 AvailableBooks = books,
-                SelectedBooks = new List<Book>()                
+                SelectedBooks = new List<int>()                
             };
             return View(viewModel);
         }
 
         // POST: Reservations/Create
         [HttpPost]
-        public ActionResult Create(Reservation reservation)
+        public ActionResult Create(ReservationNewViewModel viewModel)
         {
-            try
+           
+            if (!ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                viewModel.AvailableBooks = _context.Books.ToList();
+                viewModel.Readers = _context.Readers.ToList();
+                return View(viewModel);
+            }                
+            var reservations = new List<Reservation>();
+            bool isSelectedBooksAvailable = true;
+            viewModel.SelectedBooks.ForEach(bookId =>
+            {
+                Reservation reservation = new Reservation();
+                reservation.ReaderId = viewModel.ReaderId;
+                reservation.BookId = bookId;
 
-                return RedirectToAction("Index");
-            }
-            catch
+                var book = _context.Books.Single(b => b.Id == bookId);
+                if (book.AvailableQuantity == 0)
+                {
+                    AddError(book.Title + " is not available");
+                    isSelectedBooksAvailable = false;
+                }
+
+                reservation.ReservedDate = DateTime.Now;
+                reservation.DueDate = DateTime.Now.AddDays(14);
+                reservations.Add(reservation);
+            });
+            if (!isSelectedBooksAvailable)
             {
-                return View();
+                viewModel.AvailableBooks = _context.Books.ToList();
+                viewModel.Readers = _context.Readers.ToList();
+                return View(viewModel);
             }
+            _context.Reservations.AddRange(reservations);
+            reservations.ForEach(reservation =>
+            {
+                reservation.Book.AvailableQuantity--;
+            });
+            _context.SaveChanges();
+            return RedirectToAction("Index");        
+          
+        }
+
+        // GET: Reservations/Return/5        
+        public ActionResult Return(int id)
+        {
+            
+            var reservation = _context.Reservations.Single(rs => rs.Id == id);
+            if (reservation.ReturnedDate != null)
+            {
+                reservation.ReturnedDate = DateTime.Now;
+                reservation.Book.AvailableQuantity++;
+                _context.SaveChanges();
+            }            
+            return RedirectToAction("Index");            
         }
 
         // GET: Reservations/Edit/5
@@ -99,5 +144,11 @@ namespace Lib4U.Controllers
                 return View();
             }
         }
+        private void AddError(string error)
+        {
+            ModelState.AddModelError("", error);
+        }
     }
+
+    
 }

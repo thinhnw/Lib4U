@@ -9,3 +9,6 @@
 .validation-summary-errors {
     color: red;
 }
+.validation-summary-errors ul {
+    list-style: none;
+}
