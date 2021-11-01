@@ -1,4 +1,5 @@
-﻿
+﻿@model Lib4U.Models.BookAndMedia
+
 @{
     ViewBag.Title = "Detail";
 }
@@ -79,7 +80,7 @@
                                 <div class="single-book-box">
                                     <div class="post-thumbnail">
                                         <div class="book-list-icon yellow-icon"></div>
-                                        <img alt="Book" src="~/Content/Client/images/books-media/list-view/book-media-01.jpg" />
+                                        <img alt="Book" src="@Url.Content(Model.Image)" />
                                     </div>
                                     <div class="post-detail">
                                         <div class="books-social-sharing">
@@ -121,9 +122,11 @@
                                             </ul>
                                         </div>
                                         <header class="entry-header">
-                                            <h2 class="entry-title">The Great Gatsby</h2>
+                                            <h2 class="entry-title">
+                                                @Html.DisplayFor(model => model.Title)
+                                            </h2>
                                             <ul>
-                                                <li><strong>Author:</strong> F. Scott Fitzgerald</li>
+                                                <li><strong>Author:</strong>@Html.DisplayFor(model => model.PublisherName)</li>
                                                 <li><strong>ISBN:</strong> 9781581573268</li>
                                                 <li>
                                                     <div class="rating">

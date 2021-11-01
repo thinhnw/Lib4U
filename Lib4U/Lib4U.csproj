@@ -217,6 +217,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\BookAndMedia.cs" />
     <Compile Include="Models\BookAuthor.cs" />
     <Compile Include="Models\BookGenre.cs" />
     <Compile Include="Models\Genre.cs" />
@@ -2303,6 +2304,7 @@
     <Content Include="Content\Client\js\responsive.tabs.min.js" />
     <Content Include="Content\Client\js\waypoints.min.js" />
     <Content Include="Content\Client\style.css" />
+    <Content Include="Content\DataScript\data.sql" />
     <Content Include="Content\User\css\font-awesome.min.css" />
     <Content Include="Content\User\css\jquery.accordion.css" />
     <Content Include="Content\User\css\mmenu.css" />
