@@ -3,8 +3,8 @@ namespace Lib4U.Migrations
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
+    using System.IO;
     using System.Linq;
-
     internal sealed class Configuration : DbMigrationsConfiguration<Lib4U.Models.ApplicationDbContext>
     {
         public Configuration()
@@ -19,6 +19,7 @@ namespace Lib4U.Migrations
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
+          
         }
     }
 }
