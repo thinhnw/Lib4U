@@ -37,12 +37,27 @@
                                         <div class="topbar-info">
                                             <a href="tel:+61-3-8376-6284"><i class="fa fa-phone"></i>+61-3-8376-6284</a>
                                             <span>/</span>
-                                            <a href="mailto:support@libraria.com"><i class="fa fa-envelope"></i>support@libraria.com</a>
+                                            <a href="mailto:lib4u@fpt.edu.com"><i class="fa fa-envelope"></i>lib4u@fpt.edu.vn</a>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="topbar-links">
-                                            <a href="/Account/Login"><i class="fa fa-lock"></i>Login / Register</a>
+                                            @if (!User.Identity.IsAuthenticated)
+                                            {
+                                                <a href="/Account/Login"><i class="fa fa-lock"></i>Login</a>
+                                            }
+                                            else
+                                            {
+                                                <span>@User.Identity.Name</span>
+                                                <span>|</span>
+                                                <div style="display: inline">
+                                                    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", style="display: inline" }))
+                                                    {
+                                                        @Html.AntiForgeryToken()                                                   
+                                                        <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>                                                    
+                                                    }
+                                                </div>
+                                            }
                                             <span>|</span>
                                             <div class="header-cart dropdown">
                                                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
