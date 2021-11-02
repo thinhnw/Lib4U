@@ -49,7 +49,7 @@ namespace Lib4U.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Total_pages,Rating,Published_date,PublisherId")] Book book,HttpPostedFileBase Image)
+        public ActionResult Create([Bind(Include = "Id,Title,Total_pages,Rating,Published_date,PublisherId,Quantity,AvailableQuantity")] Book book,HttpPostedFileBase Image)
         {
             if (ModelState.IsValid)
             {
@@ -101,7 +101,7 @@ namespace Lib4U.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Total_pages,Rating,Published_date,PublisherId")] Book book,HttpPostedFileBase Image)
+        public ActionResult Edit([Bind(Include = "Id,Title,Total_pages,Rating,Published_date,PublisherId,Quantity,AvailableQuantity")] Book book,HttpPostedFileBase Image)
         {
             if (ModelState.IsValid)
             {

@@ -2305,6 +2305,9 @@
     <Content Include="Content\Client\js\waypoints.min.js" />
     <Content Include="Content\Client\style.css" />
     <Content Include="Content\DataScript\data.sql" />
+    <Content Include="Content\star-off.png" />
+    <Content Include="Content\star-on.png" />
+    <Content Include="Content\Star.css" />
     <Content Include="Content\User\css\font-awesome.min.css" />
     <Content Include="Content\User\css\jquery.accordion.css" />
     <Content Include="Content\User\css\mmenu.css" />

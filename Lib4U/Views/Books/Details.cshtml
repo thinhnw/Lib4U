@@ -35,7 +35,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Total_pages)
+            <label class="control-label col-md-2" for="Total_pages">Total Pages</label>
         </dt>
 
         <dd>
@@ -47,16 +47,41 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Rating)
-        </dd>
+            <div class="star">
+                @for (decimal i = 0; i < Math.Round(Model.Rating); i++)
+                {
+                    <span class="star-rate"></span>
+                }
+                @for (decimal i = Math.Round(Model.Rating); i < 5; i++)
+                {
+                    <span class="star-box"></span>
 
+                }
+            </div>        
+        </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Published_date)
+            <label class="control-label col-md-2" for="Published_date">Published Date</label>
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Published_date)
         </dd>
+       
+            <dt>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Quantity)
+            </dd>
+        
+            <dt>
+                <label class="control-label col-md-2" for="AvailableQuantity">Available Quantity</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AvailableQuantity)
+            </dd>
 
     </dl>
 </div>

@@ -1,0 +1,23 @@
+﻿.star {
+    width: 100%;
+    margin: 5px 0 0 0 ;
+    height:18px;
+}
+
+.star .star-box {
+    float: left;
+    width: 18px;
+    height: 18px;
+    background-image: url('star-off.png');
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+}
+
+ .star-rate {
+    float: left;
+    height: 18px;
+    width:18px;
+    background-image: url('star-on.png');
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+}
