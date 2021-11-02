@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Lib4U.Models.ReservationListViewModel>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Book Title
+        </th>
+        <th>
+            Student
+        </th>
+        <th>
+            Reserved Date
+        </th>
+        <th>
+            Due Date
+        </th>
+        <th>
+            Returned Date
+        </th>
+        <th></th>
+    </tr>
+    
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(m => item.Reservation.Book.Title)
+        </td>
+        <td>                
+            @Html.DisplayFor(m => item.StudentName)            
+        </td>
+        <td>
+            @Html.DisplayFor(m => item.Reservation.ReservedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(m => item.Reservation.DueDate)
+        </td>
+        <td>
+            @if (item.Reservation.ReturnedDate != null)
+            {
+                <span>
+                    @item.Reservation.ReturnedDate
+                </span>                
+            } 
+            else
+            {
+                <span>-</span>
+            }            
+        </td>
+        <td>
+            <span>
+
+                @if (item.Reservation.ReturnedDate == null)
+                {                    
+                    <a href="@Url.Action("Return", "Reservations", new { id = item.Reservation.Id })">
+                        <i class="fas fa-sign-in-alt text-primary"></i>
+                    </a>
+                }              
+            </span>          
+            <span>
+                @Html.ActionLink("Delete", "Delete", new { id = item.Reservation.Id })
+            </span>                                
+        </td>
+    </tr>
+}
+    
+</table>

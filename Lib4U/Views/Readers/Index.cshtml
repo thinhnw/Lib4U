@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Lib4U.Models.Reader>
+
+<h2>Readers</h2>
+
+<p>
+    @Html.ActionLink("Register New Reader For Membership", "Create", "Readers", null, new { @class="btn btn-primary" })
+</p>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Address</th>
+                        <th>#Books</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var reader in Model)
+                    {
+                        <tr>
+                            <td>@reader.Id</td>
+                            <td>@(reader.FirstName + " " + reader.LastName)</td>
+                            <td>@reader.User.Email</td>
+                            <td>@reader.MobilePhone</td>
+                            <td>@reader.Address</td>
+                            <td>1</td>
+                            <td>                                
+                                <a href="@Url.Action("Edit", "Readers", new { id = reader.Id })">
+                                    <i class="fas fa-edit text-primary"></i>
+                                </a>
+                                <i class="fas fa-times-circle text-danger ml-2"></i>                                
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

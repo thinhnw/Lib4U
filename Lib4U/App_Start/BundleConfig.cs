@@ -26,11 +26,42 @@ namespace Lib4U
                          "~/Content/bootstrap.css",
                          "~/adminlte/plugins/fontawesome-free/css/all.min.css",
                          "~/adminlte/css/adminlte.min.css",
-                         "~/Content/site.css"
+                         "~/adminlte/plugins/select2/css/select2.min.css",
+                         "~/Content/Site.css"
                          ));
 
             bundles.Add(new ScriptBundle("~/adminlte/js").Include(
-             "~/adminlte/js/adminlte.min.js"));
+                        "~/adminlte/js/adminlte.min.js",
+                        "~/adminlte/plugins/select2/js/select2.min.js"
+                        ));
+
+            // add user css
+            bundles.Add(new StyleBundle("~/Client/css").Include(
+                            "~/Content/Client/css/font-awesome.min.css",
+                            "~/Content/Client/css/mmenu.css",
+                            "~/Content/Client/css/mmenu.positioning.css",
+                            "~/Content/Client/css/jquery.accordion.css",
+                            "~/Content/Client/style.css"
+                            ));
+            bundles.Add(new ScriptBundle("~/Client/js").Include(
+                            "~/Content/Client/js/jquery-1.12.4.min.js",
+                            "~/Content/Client/js/jquery-ui.min.js",
+                            "~/Content/Client/js/jquery.easing.1.3.js",
+                            "~/Content/Client/js/bootstrap.min.js",
+                            "~/Content/Client/js/mmenu.min.js",
+                            "~/Content/Client/js/harvey.min.js",
+                            "~/Content/Client/js/waypoints.min.js",
+                            "~/Content/Client/js/facts.counter.min.js",
+                            "~/Content/Client/js/mixitup.min.js",
+                            "~/Content/Client/js/owl.carousel.min.js",
+                            "~/Content/Client/js/accordion.min.js",
+                            "~/Content/Client/js/responsive.tabs.min.js",
+                            "~/Content/Client/js/responsive.table.min.js",
+                            "~/Content/Client/js/masonry.min.js",
+                            "~/Content/Client/js/carousel.swipe.min.js",
+                            "~/Content/Client/js/bxslider.min.js",
+                            "~/Content/Client/js/main.js"
+                ));
         }
     }
 }
