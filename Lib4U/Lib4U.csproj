@@ -213,6 +213,10 @@
     <Compile Include="Migrations\202110290237551_AddReservationsTable.Designer.cs">
       <DependentUpon>202110290237551_AddReservationsTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111022033398_AddConfirmedDateToReservations.cs" />
+    <Compile Include="Migrations\202111022033398_AddConfirmedDateToReservations.Designer.cs">
+      <DependentUpon>202111022033398_AddConfirmedDateToReservations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Author.cs" />
@@ -2784,6 +2788,7 @@
     <Content Include="Views\Client\Detail.cshtml" />
     <Content Include="Views\Reservations\Index.cshtml" />
     <Content Include="Views\Reservations\Create.cshtml" />
+    <Content Include="Views\Client\Borrowing.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2817,6 +2822,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110270308178_RunSqlScript.resx">
       <DependentUpon>202110270308178_RunSqlScript.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111022033398_AddConfirmedDateToReservations.resx">
+      <DependentUpon>202111022033398_AddConfirmedDateToReservations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

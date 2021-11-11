@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -19,6 +20,8 @@ namespace Lib4U.Models
         public DateTime ReservedDate { get; set; }
         [Display(Name = "Due Date")]
         public DateTime DueDate { get; set; }
+        [Display(Name = "Confirmed Date")]
+        public DateTime? ConfirmedDate { get; set; }
         [Display(Name = "Returned Date")]
         public DateTime? ReturnedDate { get; set; }
 

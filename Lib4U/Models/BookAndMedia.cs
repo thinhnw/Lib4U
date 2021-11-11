@@ -16,5 +16,7 @@ namespace Lib4U.Models
         public string PublisherName { get; set; }
         public string First_name { get; set; }
         public string Last_name { get; set; }
+        public int Quantity { get; set; }
+        public int AvailableQuantity { get; set; }
     }
 }

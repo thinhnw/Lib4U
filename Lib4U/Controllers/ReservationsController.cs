@@ -17,7 +17,7 @@ namespace Lib4U.Controllers
         // GET: Reservations
         public ActionResult Index()
         {
-            var viewModel = _context.Reservations.Select(rs => new ReservationListViewModel { Reservation = rs }).ToArray();
+            var viewModel = _context.Reservations.OrderByDescending(r => r.ReservedDate).Select(rs => new ReservationListViewModel { Reservation = rs }).ToArray();
             return View(viewModel);
         }
 
@@ -69,6 +69,10 @@ namespace Lib4U.Controllers
 
                 reservation.ReservedDate = DateTime.Now;
                 reservation.DueDate = DateTime.Now.AddDays(14);
+                if (User.IsInRole("Admin"))
+                {
+                    reservation.ConfirmedDate = reservation.ReservedDate;
+                }
                 reservations.Add(reservation);
             });
             if (!isSelectedBooksAvailable)
@@ -92,7 +96,13 @@ namespace Lib4U.Controllers
         {
             
             var reservation = _context.Reservations.Single(rs => rs.Id == id);
-            if (reservation.ReturnedDate != null)
+            if (reservation.ConfirmedDate == null)
+            {
+                reservation.ConfirmedDate = DateTime.Now;
+                reservation.Book.AvailableQuantity--;
+                _context.SaveChanges();
+            }
+            else if (reservation.ReturnedDate == null)
             {
                 reservation.ReturnedDate = DateTime.Now;
                 reservation.Book.AvailableQuantity++;

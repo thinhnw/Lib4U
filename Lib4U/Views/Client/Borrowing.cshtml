@@ -1,0 +1,53 @@
+﻿@model ICollection<Lib4U.Models.ReservationListViewModel>
+<section class="page-banner services-banner">
+    <div class="container">
+        <div class="breadcrumb">
+            <ul>
+                <li><a href="index-2.html">Home</a></li>
+                <li>Reservations</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<div class="container">
+    <div class="reservation">
+        @foreach (var reservation in Model)
+        {
+            <div class="col-3">
+                <div class="card">
+
+                    <img alt="Book" src="@Url.Content(reservation.Reservation.Book.Image)" />
+                    <div class="card-body">
+                        <h5>@reservation.Reservation.Book.Title</h5>
+                        <br />
+                        <p><span>Reserved date: </span>@reservation.Reservation.ReservedDate.ToString("dd/MM/yyyy")</p>
+                        <p><span>Due date: </span>@reservation.Reservation.DueDate.ToString("dd/MM/yyyy")</p>
+                    </div>
+                </div>
+                
+            </div>
+        }
+    </div>
+</div>
+<style>
+    .reservation {
+        display: flex;
+    }
+    .col-3 {
+        width: 25%;
+        margin-top: 20px;
+        padding: 0 10px;
+    }
+    .card {
+        border: 1px solid #ddd;
+        height: 550px;
+    }
+    .col-3 img {
+        width: 100%;
+        height: 400px;
+        display: block;
+    }
+    .card-body {
+        padding: 16px;
+    }
+</style>

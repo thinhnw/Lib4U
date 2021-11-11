@@ -31,6 +31,8 @@ namespace Lib4U.Models
         {
             get => FirstName + " " + LastName;
         }
+
+        public virtual ICollection<Reservation> Reservations { get; set; }
     }
 
     public class ReaderCreateViewModel
@@ -81,4 +83,5 @@ namespace Lib4U.Models
         [Display(Name = "Phone Number")]
         public string MobilePhone { get; set; }
     }
+
 }

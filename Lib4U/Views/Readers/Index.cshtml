@@ -1,10 +1,11 @@
 ﻿@model IEnumerable<Lib4U.Models.Reader>
 
-<h2>Readers</h2>
-
-<p>
-    @Html.ActionLink("Register New Reader For Membership", "Create", "Readers", null, new { @class="btn btn-primary" })
-</p>
+<div class="readers__header">
+    <h2>Readers</h2>
+    <p>
+        @Html.ActionLink("Register New Reader For Membership", "Create", "Readers", null, new { @class = "btn btn-primary" })
+    </p>
+</div>
 
 <div class="container-fluid">
     <div class="row">
@@ -30,7 +31,7 @@
                             <td>@reader.User.Email</td>
                             <td>@reader.MobilePhone</td>
                             <td>@reader.Address</td>
-                            <td>1</td>
+                            <td>@reader.Reservations.Count</td>
                             <td>                                
                                 <a href="@Url.Action("Edit", "Readers", new { id = reader.Id })">
                                     <i class="fas fa-edit text-primary"></i>
@@ -44,3 +45,11 @@
         </div>
     </div>
 </div>
+
+<style>
+    .readers__header {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 16px;
+    }
+</style>

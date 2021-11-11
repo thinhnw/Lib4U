@@ -1,7 +1,9 @@
 ﻿@model IEnumerable<Lib4U.Models.ReservationListViewModel>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
+<p class="mt-3">    
+    <a href="@Url.Action("Create", "Reservations")" class="btn btn-primary">
+        Create New
+    </a>
 </p>
 <table class="table">
     <tr>
@@ -15,6 +17,9 @@
             Reserved Date
         </th>
         <th>
+            Confirmed Date
+        </th>
+        <th>
             Due Date
         </th>
         <th>
@@ -24,46 +29,54 @@
     </tr>
     
 @foreach (var item in Model) {
-    <tr>
-        <td>
+<tr>
+    <td>
+        <a href="@Url.Action("Details", "Books", new { Id = item.Reservation.Book.Id })">
             @Html.DisplayFor(m => item.Reservation.Book.Title)
-        </td>
-        <td>                
-            @Html.DisplayFor(m => item.StudentName)            
-        </td>
-        <td>
-            @Html.DisplayFor(m => item.Reservation.ReservedDate)
-        </td>
-        <td>
-            @Html.DisplayFor(m => item.Reservation.DueDate)
-        </td>
-        <td>
-            @if (item.Reservation.ReturnedDate != null)
-            {
-                <span>
-                    @item.Reservation.ReturnedDate
-                </span>                
-            } 
-            else
-            {
-                <span>-</span>
-            }            
-        </td>
-        <td>
-            <span>
+        </a>
 
-                @if (item.Reservation.ReturnedDate == null)
-                {                    
-                    <a href="@Url.Action("Return", "Reservations", new { id = item.Reservation.Id })">
-                        <i class="fas fa-sign-in-alt text-primary"></i>
-                    </a>
-                }              
-            </span>          
+    </td>
+    <td>
+        @Html.DisplayFor(m => item.StudentName)
+    </td>
+    <td>
+        @Html.DisplayFor(m => item.Reservation.ReservedDate)
+    </td>
+    <td>
+        @Html.DisplayFor(m => item.Reservation.ConfirmedDate)
+    </td>
+    <td>
+        @Html.DisplayFor(m => item.Reservation.DueDate)
+    </td>
+    <td>
+        @if (item.Reservation.ReturnedDate != null)
+        {
             <span>
-                @Html.ActionLink("Delete", "Delete", new { id = item.Reservation.Id })
-            </span>                                
-        </td>
-    </tr>
+                @item.Reservation.ReturnedDate
+            </span>
+        }
+        else
+        {
+            <span>-</span>
+        }
+    </td>
+    <td>
+        <span class="mr-3">
+
+            @if (item.Reservation.ReturnedDate == null)
+            {
+                <a href="@Url.Action("Return", "Reservations", new { id = item.Reservation.Id })">
+                    <i class="fas fa-sign-in-alt text-primary"></i>
+                </a>
+            }
+        </span>
+        <span>
+            <a href="@Url.Action("Delete", "Reservations", new { id = item.Reservation.Id })">
+                <i class="fas fa-minus-circle text-danger"></i>
+            </a>
+        </span>
+    </td>
+</tr>
 }
     
 </table>

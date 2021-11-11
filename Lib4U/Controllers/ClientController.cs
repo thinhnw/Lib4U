@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Lib4U.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Lib4U.Controllers
 {   
@@ -36,7 +37,9 @@ namespace Lib4U.Controllers
                             Rating = book.Rating,
                             First_name = author.First_name,
                             Last_name = author.Last_name,
-                            PublisherName = publisher.Name
+                            PublisherName = publisher.Name,
+                            Quantity = book.Quantity,
+                            AvailableQuantity = book.AvailableQuantity
                         };
            
             foreach (BookAndMedia item in query)
@@ -45,6 +48,33 @@ namespace Lib4U.Controllers
                 return View(listBook);
             }
             return RedirectToAction("BookAndMedia");
+        }
+
+        [HttpPost]
+        public ActionResult Reserve(BookAndMedia viewModel)
+        {
+            Reservation reservation = new Reservation();
+            var userId = User.Identity.GetUserId();
+            reservation.ReaderId = db.Readers.Single(reader => reader.User.Id == userId).Id;
+            reservation.BookId = viewModel.Id;
+
+            db.Reservations.Add(reservation);
+            var book = db.Books.Single(b => b.Id == reservation.BookId);
+            book.AvailableQuantity--;
+
+
+            reservation.ReservedDate = DateTime.Now;
+            reservation.DueDate = DateTime.Now.AddDays(14);
+            
+            db.SaveChanges();
+            return RedirectToAction("Borrowing");
+        }
+        public ActionResult Borrowing()
+        {
+            var userId = User.Identity.GetUserId();
+            var readerId = db.Readers.Single(reader => reader.User.Id == userId).Id;
+            var reservations = db.Reservations.Where(rs => rs.ReaderId == readerId && rs.ReturnedDate == null).Select(rs => new ReservationListViewModel { Reservation = rs }).ToArray();
+            return View(reservations);
         }
         public ActionResult BookAndMedia()
         {
