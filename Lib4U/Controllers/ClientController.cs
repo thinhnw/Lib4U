@@ -100,5 +100,12 @@ namespace Lib4U.Controllers
         {
             return View();
         }
+
+        [Authorize(Roles = "Reader")]
+        public ActionResult BookSuggestion()
+        {
+            var bookSuggestion = new BookSuggestion();
+            return View();
+        }
     }
 }
