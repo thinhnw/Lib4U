@@ -3,6 +3,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Owin;
+using Hangfire;
+using Lib4U.Controllers;
 
 [assembly: OwinStartupAttribute(typeof(Lib4U.Startup))]
 namespace Lib4U
@@ -13,6 +15,14 @@ namespace Lib4U
         {
             ConfigureAuth(app);
             createRolesandUsers();
+            GlobalConfiguration.Configuration.UseSqlServerStorage("DefaultConnection");
+
+            /*Hang Fire*/
+            app.UseHangfireDashboard();
+            //Controller
+            SendMailController reservations = new SendMailController();
+            RecurringJob.AddOrUpdate("Send Email", () => reservations.SendEmail(null, null), Cron.Minutely);
+            app.UseHangfireServer();
         }
         private void createRolesandUsers()
         {
