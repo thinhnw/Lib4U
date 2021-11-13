@@ -37,6 +37,15 @@ namespace Lib4U.Models
 
     }
 
+    public class ReservationListEmail
+    {
+        public Reservation Reservation;
+        public string StudentMail
+        {
+            get => Reservation.Reader.User.Email;
+        }
+
+    }
 
     public class ReservationNewViewModel
     {        
