@@ -187,7 +187,6 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PublishersController.cs" />
     <Compile Include="Controllers\ReadersController.cs" />
-    <Compile Include="Controllers\RerservationNewViewModel.cs" />
     <Compile Include="Controllers\ReservationsController.cs" />
     <Compile Include="Controllers\SendMailController.cs" />
     <Compile Include="Global.asax.cs">
@@ -224,6 +223,10 @@
     <Compile Include="Migrations\202111022033398_AddConfirmedDateToReservations.cs" />
     <Compile Include="Migrations\202111022033398_AddConfirmedDateToReservations.Designer.cs">
       <DependentUpon>202111022033398_AddConfirmedDateToReservations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111141244210_AddBookSuggestions.cs" />
+    <Compile Include="Migrations\202111141244210_AddBookSuggestions.Designer.cs">
+      <DependentUpon>202111141244210_AddBookSuggestions.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -2799,10 +2802,12 @@
     <Content Include="Views\Reservations\Create.cshtml" />
     <Content Include="Views\Client\Borrowing.cshtml" />
     <Content Include="Views\Client\BookSuggestion.cshtml" />
+    <Content Include="Views\BookSuggestions\Index.cshtml" />
+    <Content Include="Views\BookSuggestions\Create.cshtml" />
+    <Content Include="Views\BookSuggestions\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\BookSuggestions\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -2836,6 +2841,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111022033398_AddConfirmedDateToReservations.resx">
       <DependentUpon>202111022033398_AddConfirmedDateToReservations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111141244210_AddBookSuggestions.resx">
+      <DependentUpon>202111141244210_AddBookSuggestions.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

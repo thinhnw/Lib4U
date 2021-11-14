@@ -47,8 +47,8 @@
                                                 <a href="/Account/Login"><i class="fa fa-lock"></i>Login</a>
                                             }
                                             else
-                                            {
-                                                <span>@User.Identity.Name</span>
+                                            {                                                
+                                                <a href="@Url.Action("Profile")">@User.Identity.Name</a>
                                                 <span>|</span>
                                                 <div style="display: inline">
                                                     @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", style="display: inline" }))

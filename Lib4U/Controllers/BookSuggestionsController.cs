@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lib4U.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,17 @@ namespace Lib4U.Controllers
 {
     public class BookSuggestionsController : Controller
     {
+        private ApplicationDbContext _context;
+        public BookSuggestionsController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
         // GET: BookSuggestions
         public ActionResult Index()
         {
-            return View();
+            var models = _context.BookSuggestions.ToList();
+            return View(models);
         }
 
         // GET: BookSuggestions/Details/5
@@ -23,34 +31,36 @@ namespace Lib4U.Controllers
         // GET: BookSuggestions/Create
         public ActionResult Create()
         {
-            return View();
+            var model = new BookSuggestion();
+            return View(model);
         }
 
         // POST: BookSuggestions/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(BookSuggestion viewModel)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                if (!ModelState.IsValid)
+                {
+                    return View(viewModel);
+                }
+                
+                _context.BookSuggestions.Add(viewModel);
+                _context.SaveChanges();
+                return RedirectToAction("Index");                
             }
             catch
             {
-                return View();
+                return View(viewModel);
             }
         }
 
-        // GET: BookSuggestions/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
+       
 
-        // POST: BookSuggestions/Edit/5
+        // POST: BookSuggestions/Complete/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Complete(int id, FormCollection collection)
         {
             try
             {
