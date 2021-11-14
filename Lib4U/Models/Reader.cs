@@ -83,5 +83,22 @@ namespace Lib4U.Models
         [Display(Name = "Phone Number")]
         public string MobilePhone { get; set; }
     }
+    public class ReaderListName
+    {
+        public Reader Reader;
+        public string StudentName
+        {
+            get => Reader.FirstName + " " + Reader.LastName;
+        }
 
+    }
+    public class ReaderListMobilePhone
+    {
+        public Reader Reader;
+        public string StudentMobilePhone
+        {
+            get =>Reader.MobilePhone ;
+        }
+
+    }
 }

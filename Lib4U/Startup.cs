@@ -21,7 +21,7 @@ namespace Lib4U
             app.UseHangfireDashboard();
             //Controller
             SendMailController reservations = new SendMailController();
-            RecurringJob.AddOrUpdate("Send Email", () => reservations.SendEmail(null, null), Cron.Minutely);
+            RecurringJob.AddOrUpdate("Send Email", () => reservations.SendEmail(null, null,null,null), Cron.Minutely);
             app.UseHangfireServer();
         }
         private void createRolesandUsers()

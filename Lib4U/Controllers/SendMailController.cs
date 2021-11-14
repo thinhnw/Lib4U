@@ -26,17 +26,16 @@ namespace Lib4U.Controllers
         // GET: SendMail
         public Reservation Reservation = new Reservation();
 
-        public async Task<ActionResult> SendEmail(string subjectMail,string contentMail)
+        public async Task<ActionResult> SendEmail(string subjectMail,string contentMail,string link,string author)
         {
 
-            string settingContent = null;
             string combineBookName = null;
             DateTime date = DateTime.Now.AddDays(12);
             var reservation_db = _context.Reservations.Where(x => DbFunctions.DiffDays(x.DueDate, date) <= 3).Select(rs => new ReservationListEmail { Reservation = rs }).ToArray();
             foreach (var item in reservation_db)
             {
                 List<string> bookName = new List<string>();
-                if (settingContent == null)
+                if (contentMail == null)
                 {
                     foreach (var itemRes in reservation_db)
                     {
@@ -61,20 +60,28 @@ namespace Lib4U.Controllers
                     contentMail = combineBookName;
                     combineBookName = null;
                 }
-
-                if (subjectMail == null)
+                else
                 {
-                    subjectMail = "Hạn trả sách của bạn vào ngày :" + item.Reservation.DueDate.Date.ToString();
+                    contentMail += " - " + link + " - " + author;
+                    if (subjectMail == null)
+                    {
+                        subjectMail = "Hạn trả sách của bạn vào ngày :" + item.Reservation.DueDate.Date.ToString();
+                    }
+                    var content = EMailTemplate("email");
+                    var readerName = _context.Readers.Select(rs => new ReaderListName { Reader = rs }).ToArray();
+                    var readerMobile = _context.Readers.Select(rs => new ReaderListMobilePhone { Reader = rs }).ToArray();
+                    for (var i = 0; i < readerName.Length; i++)
+                    {
+                        content = content.Replace("{{CustomerName}}", readerName[i].StudentName);
+                        content = content.Replace("{{Phone}}", readerMobile[i].StudentMobilePhone);
+                        content = content.Replace("{{Email}}", item.StudentMail);
+                        content = content.Replace("{{Address}}", "hanoi");
+                        content = content.Replace("{{Content}}", contentMail);
+                        new Common.Class1().ConfigMail(item.StudentMail, "Library", subjectMail, content);
+                    }
                 }
-                var content = EMailTemplate("email");
-                content = content.Replace("{{CustomerName}}", "Le Dat");
-                content = content.Replace("{{Phone}}", "09123123123");
-                content = content.Replace("{{Email}}", item.StudentMail);
-                content = content.Replace("{{Address}}", "hanoi");
-                content = content.Replace("{{Content}}", contentMail);
-                new Common.Class1().ConfigMail(item.StudentMail, "Library", subjectMail, content);
 
-                //End Email
+                    //End Email
             }
             return Json(0, JsonRequestBehavior.AllowGet);
 

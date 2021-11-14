@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -59,19 +60,18 @@ namespace Lib4U.Controllers
        
 
         // POST: BookSuggestions/Complete/5
-        [HttpPost]
-        public ActionResult Complete(int id, FormCollection collection)
+        public async Task<ActionResult> Complete(int id, FormCollection collection)
         {
-            try
-            {
+            
                 // TODO: Add update logic here
-
+                SendMailController reservations = new SendMailController();
+                var books = (from book in _context.Books where book.Rating >= 4 select book);
+                foreach (var book in books) {
+                  await reservations.SendEmail("Chúng tôi đã nhận yêu cầu mua sách của bạn", book.Title, "https://localhost:44371/Client/Detail/" + book.Id, book.Publisher.Name); ;
+                }
                 return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            
+            
         }
 
         // GET: BookSuggestions/Delete/5

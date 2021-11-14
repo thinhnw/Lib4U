@@ -24,9 +24,7 @@ namespace Lib4U.Controllers
         public ActionResult Detail(int? id)
         {
             var query = from book in db.Books
-                        join bookAuthor in db.BookAuthors on book.Id equals bookAuthor.Id
                         where id == book.Id
-                        join author in db.Authors on bookAuthor.Id equals author.Id
                         join publisher in db.Publishers on book.PublisherId equals publisher.Id
                         select new BookAndMedia
                         {
@@ -35,8 +33,6 @@ namespace Lib4U.Controllers
                             Image = book.Image,
                             Total_pages = book.Total_pages,
                             Rating = book.Rating,
-                            First_name = author.First_name,
-                            Last_name = author.Last_name,
                             PublisherName = publisher.Name,
                             Quantity = book.Quantity,
                             AvailableQuantity = book.AvailableQuantity
@@ -79,8 +75,6 @@ namespace Lib4U.Controllers
         public ActionResult BookAndMedia()
         {
             var query = from book in db.Books
-                        join bookAuthor in db.BookAuthors on book.Id equals bookAuthor.Id
-                        join author in db.Authors on bookAuthor.Id equals author.Id
                         join publisher in db.Publishers on book.PublisherId equals publisher.Id
                         select new BookAndMedia { 
                                     Id = book.Id,
@@ -88,8 +82,6 @@ namespace Lib4U.Controllers
                                     Image = book.Image,
                                     Total_pages=  book.Total_pages,
                                     Rating = book.Rating,
-                                    First_name = author.First_name,
-                                    Last_name = author.Last_name,
                                     PublisherName = publisher.Name
                         };
             var listBook = query.ToList();
